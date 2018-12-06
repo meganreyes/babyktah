@@ -58,18 +58,27 @@ function newGame() {
   player.draw();
   enemies.forEach(enemy => enemy.draw());
   player.move({ x: mouseX, y: mouseY });
-  enemies.forEach(enemy => enemy.move(player));
-  adjustEnemies();
-  decreasePlayerHealth();
-}
+  enemies.forEach(enemy => enemy.move(scarecrow || player));
+   decreasePlayerHealth();
+   if (scarecrow) {
+     scarecrow.draw();
+     scarecrow.ttl--;
+     if (scarecrow.ttl < 0) {
+       scarecrow = undefined;
+     }
+   }
+   adjust();
+ }
 
-function adjustEnemies() {
-  for (let i = 0; i < enemies.length; i++) {
-    for (let j = i + 1; j < enemies.length; j++) {
-      pushOff(enemies[i], enemies[j]);
-    }
-  }
-}
+ function adjust() {
+   const characters = [player, ...enemies];
+   for (let i = 0; i < characters.length; i++) {
+     for (let j = i + 1; j < characters.length; j++) {
+       pushOff(characters[i], characters[j]);
+     }
+   }
+ }
+
 
 function decreasePlayerHealth() {
   for (let i = 0; i < enemies.length; i++) {
@@ -126,5 +135,12 @@ function endGame() {
     );
     endMessage.display();
     restartMessage.display();
+  }
+}
+
+function mouseClicked() {
+  if (!scarecrow) {
+    scarecrow = new Character(player.x, player.y, "white", 10, 0);
+    scarecrow.ttl = frameRate() * 5;
   }
 }
