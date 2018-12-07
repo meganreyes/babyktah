@@ -51,7 +51,6 @@ function setup() {
 function draw() {
   background("lightgreen");
   if (mouseIsPressed && playerHealth.value === 0) {
-    audioHasNotPlayed = true;
     playerHealth.value = 100;
   }
   newGame();
