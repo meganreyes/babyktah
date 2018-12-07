@@ -117,6 +117,7 @@ function pushOff(c1, c2) {
 function endGame() {
   if (playerHealth.value === 0) {
     audio.play();
+    audio.pause();
     background("rgba(241, 95, 95, .65)");
     const endMessage = new Text(
       "GAME OVER!",
