@@ -1,5 +1,5 @@
-const audio = new Audio('Dun-dun-dun-sound-effect-brass.mp3');
-const audioHasNotPlayed = true;
+//const audio = new Audio('Dun-dun-dun-sound-effect-brass.mp3');
+//const audioHasNotPlayed = true;
 
 class Character {
   constructor(x, y, color, radius, speed) {
@@ -58,7 +58,7 @@ function draw() {
 }
 
 function newGame() {
-  audioHasNotPlayed = true;
+  //audioHasNotPlayed = true;
   player.draw();
   enemies.forEach(enemy => enemy.draw());
   player.move({ x: mouseX, y: mouseY });
@@ -118,10 +118,10 @@ function pushOff(c1, c2) {
 
 function endGame() {
   if (playerHealth.value === 0) {
-    if (audioHasNotPlayed){
-      audio.play();
-      audioHasNotPlayed = false;
-    }
+    //if (audioHasNotPlayed){
+    //  audio.play();
+    //  audioHasNotPlayed = false;
+    //}
     background("rgba(241, 95, 95, .65)");
     const endMessage = new Text(
       "GAME OVER!",
