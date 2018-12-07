@@ -37,6 +37,7 @@ const enemies = [
 ];
 let playerHealth = document.querySelector("#playerHealth");
 let scarecrow;
+let backgroundColor = "lightgreen";
 
 
 function setup() {
@@ -46,9 +47,10 @@ function setup() {
 }
 
 function draw() {
-  background("lightgreen");
+  background(backgroundColor);
   if (mouseIsPressed && playerHealth.value === 0) {
     playerHealth.value = 100;
+    backgroundColor = getRandomColor();
   }
   newGame();
   endGame();
@@ -143,4 +145,13 @@ function mouseClicked() {
     scarecrow = new Character(player.x, player.y, "white", 10, 0);
     scarecrow.ttl = frameRate() * 5;
   }
+}
+
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
