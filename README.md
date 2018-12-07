@@ -1,5 +1,7 @@
 # babyktah
 
+Help Mr. Bluedot escape the evil circles!
+
 Play it [here](https://meganreyes.github.io/babyktah/)!
 
 A project written for CMSI 185 by Megan Reyes and Amanda Marques
